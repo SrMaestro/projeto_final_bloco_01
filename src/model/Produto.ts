@@ -1,5 +1,8 @@
+import { log } from "console";
+
 export abstract class Produto {
     // Atributos da classe Produto
+    private _numero: number;
     private _nome: string;
     private _preco: number;
     private _quantidade: number;
@@ -7,7 +10,8 @@ export abstract class Produto {
 
     // Construtor para buildar no objeto
 
-    constructor(nome: string, preco: number, quantidade: number) {
+    constructor(numero: number, nome: string, preco: number, quantidade: number) {
+        this._numero = numero;
         this._nome = nome;
         this._preco = this.validarValor(preco);
         this._quantidade = this.validarValor(quantidade);
@@ -16,6 +20,15 @@ export abstract class Produto {
 
 
     // Getters e Setters
+
+    public get numero() {
+        return this._numero;
+    }
+
+    public set numero(numero: number) {
+        this._numero = numero;
+    }
+
     public get nome() {
         return this._nome;
     }
@@ -43,8 +56,8 @@ export abstract class Produto {
     }
 
 
-
     public exibirDetalhes(): void {
+        console.log(`Numero : ${this._numero}`);
         console.log(`Produto: ${this._nome}`);
         console.log(`Preço: R$ ${this._preco.toFixed(2)}`);
         console.log(`Quantidade: ${this._quantidade}`);
@@ -61,5 +74,5 @@ export abstract class Produto {
     }
 
 
-    
+
 }

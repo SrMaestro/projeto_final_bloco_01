@@ -1,15 +1,21 @@
 import readlinesync = require("readline-sync");
 import { Produto } from "./src/model/Produto";
 import { Livro } from "./src/model/Livro";
+import { ProdutoController } from "./src/controller/ProdutoController";
 
 export function main() {
 
-    let opcao: number; // variavel iniciada
+    let produtos: ProdutoController = new ProdutoController();
+
+    let opcao, numero, preco, quantidade, paginas: number;
+    let nome, autor: string;
+
 
 
     // Objeto Produto (teste)
 
     const livro1 = new Livro(
+        1,                 // numero
         "Clean Code",      // nome
         120.00,            // preco
         10,                // quantidade
@@ -66,30 +72,89 @@ export function main() {
         switch (opcao) {
             case 1:
                 console.log("\n\nAdiciona Produto\n\n");
+
+                console.log("Digite o nome do produto: ");
+                nome = readlinesync.question("");
+
+                console.log("Digite o preco do produto: ");
+                preco = readlinesync.questionFloat("");
+
+                console.log("\nDigite a quantidade: ");
+                quantidade = readlinesync.questionInt("");
+
+                console.log("Digite o autor do livro: ");
+                autor = readlinesync.question("");
+
+                console.log("Digite o número de páginas: ");
+                paginas = readlinesync.questionInt("");
+
+
+                // Cria o produto usando os valores digitados
+                produtos.criar(new Livro(produtos.gerarNumero(), nome, preco, quantidade, autor, paginas));
+
+
                 keyPress()
 
                 break;
             case 2:
                 console.log("\n\nLista Produtos\n\n");
+                produtos.listar();
                 keyPress()
                 break;
             case 3:
                 console.log("\n\nBuscar Produto\n\n");
+                console.log("Digite o nome do produto: ");
+                nome = readlinesync.question("")
+                produtos.buscarPorNome(nome);
                 keyPress()
                 break;
             case 4:
-                console.log("\n\nEditar produto\n\n");
+                console.log("Digite o número da Conta: ");
+                numero = readlinesync.questionInt("");
+
+                let conta = produtos.buscarPorId(numero);
+
+                if (conta != null) {
+                    console.log("\n\nAdiciona Produto\n\n");
+
+                    console.log("Digite o nome do produto: ");
+                    nome = readlinesync.question("");
+
+                    console.log("Digite o preco do produto: ");
+                    preco = readlinesync.questionFloat("");
+
+                    console.log("\nDigite a quantidade: ");
+                    quantidade = readlinesync.questionInt("");
+
+                    console.log("Digite o autor do livro: ");
+                    autor = readlinesync.question("");
+
+                    console.log("Digite o número de páginas: ");
+                    paginas = readlinesync.questionInt("");
+
+
+                    // Cria o produto usando os valores digitados
+                    produtos.criar(new Livro(produtos.gerarNumero(), nome, preco, quantidade, autor, paginas));
+
+                } else {
+                    console.log("\nA Conta numero: " + numero + " não foi encontrada!",);
+                }
+
                 keyPress()
                 break;
             case 5:
                 console.log("\n\nExcluir Produto\n\n");
+
+                console.log("Digite o número do Produto");
+                const id = readlinesync.question("");
+                produtos.remover(id);
+
                 keyPress()
                 break;
             case 6:
                 console.log("\n\nSair\n\n");
                 keyPress()
                 break;
-                keyPress()
             default:
                 console.log("\nOpção Inválida!\n");
                 keyPress()
