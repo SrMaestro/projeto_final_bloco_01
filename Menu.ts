@@ -1,8 +1,37 @@
 import readlinesync = require("readline-sync");
+import { Produto } from "./src/model/Produto";
+import { Livro } from "./src/model/Livro";
 
 export function main() {
 
     let opcao: number; // variavel iniciada
+
+
+    // Objeto Produto (teste)
+
+    const livro1 = new Livro(
+        "Clean Code",      // nome
+        120.00,            // preco
+        10,                // quantidade
+        "Robert C. Martin",// autor
+        464                // numeroPaginas
+    );
+
+
+    // Exibir detalhes do livro
+    livro1.exibirDetalhes();
+
+    // Alterar atributos
+    livro1.quantidade = 15;
+    livro1.numeroPaginas = 500;
+
+    // Mostrar novamente
+    console.log("\nApós alterações:");
+    livro1.exibirDetalhes();
+
+
+
+
 
     // o while serve para continuar mostrando o menu quando um condicao for verdadeira, porem estamos usando `process.exit(0)` para encerrar a execucao
     while (true) {
@@ -37,33 +66,33 @@ export function main() {
         switch (opcao) {
             case 1:
                 console.log("\n\nAdiciona Produto\n\n");
-                 keyPress()
+                keyPress()
 
                 break;
             case 2:
                 console.log("\n\nLista Produtos\n\n");
-                 keyPress()
+                keyPress()
                 break;
             case 3:
                 console.log("\n\nBuscar Produto\n\n");
-                 keyPress()
+                keyPress()
                 break;
             case 4:
                 console.log("\n\nEditar produto\n\n");
-                 keyPress()
+                keyPress()
                 break;
             case 5:
                 console.log("\n\nExcluir Produto\n\n");
-                 keyPress()
+                keyPress()
                 break;
             case 6:
                 console.log("\n\nSair\n\n");
-                 keyPress()
+                keyPress()
                 break;
-                 keyPress()
+                keyPress()
             default:
                 console.log("\nOpção Inválida!\n");
-                 keyPress()
+                keyPress()
                 break;
         }
     }
