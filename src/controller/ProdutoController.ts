@@ -45,6 +45,9 @@ export class ProdutoController implements ProdutoRepository {
             console.log("\nA Conta numero: " + produto.nome +
                 " não foi encontrada!");
         }
+
+        console.log(buscaConta);
+        
     }
 
     remover(nome: string): void {

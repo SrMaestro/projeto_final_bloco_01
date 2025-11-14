@@ -109,10 +109,12 @@ export function main() {
                 keyPress()
                 break;
             case 4:
-                console.log("Digite o número da Conta: ");
-                numero = readlinesync.questionInt("");
+                console.log("Digite o nome do Produto: ");
+                nome = readlinesync.question("");
 
-                let conta = produtos.buscarPorId(numero);
+                let conta = produtos.buscarArray(nome);
+                console.log(conta);
+                
 
                 if (conta != null) {
                     console.log("\n\nAdiciona Produto\n\n");
@@ -134,10 +136,10 @@ export function main() {
 
 
                     // Cria o produto usando os valores digitados
-                    produtos.criar(new Livro(produtos.gerarNumero(), nome, preco, quantidade, autor, paginas));
+                    produtos.atualizar(new Livro(produtos.gerarNumero(), nome, preco, quantidade, autor, paginas));
 
                 } else {
-                    console.log("\nA Conta numero: " + numero + " não foi encontrada!",);
+                    console.log("\nO produto com o nome: " + numero + " não foi encontrada!",);
                 }
 
                 keyPress()
