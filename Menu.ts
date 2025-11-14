@@ -29,7 +29,7 @@ export function main() {
 
         //caso a opcao for igual a 6 o terminal sera encerrado
         if (opcao == 6) {
-            console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
+            console.log("\nMensagem de saida");
             process.exit(0);
         }
 
