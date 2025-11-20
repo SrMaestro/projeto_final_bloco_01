@@ -2,38 +2,31 @@ import readlinesync = require("readline-sync");
 import { Produto } from "./src/model/Produto";
 import { Livro } from "./src/model/Livro";
 import { ProdutoController } from "./src/controller/ProdutoController";
+import { ProdutoEletronico } from "./src/model/ProdutoEletronico";
 
 export function main() {
 
+    //Instanciando controller para gerenciar
     let produtos: ProdutoController = new ProdutoController();
 
-    let opcao, numero, preco, quantidade, paginas: number;
-    let nome, autor: string;
+    let opcao, numero, preco: number;
+    let nome, marca: string;
 
 
 
-    // Objeto Produto (teste)
-
-    const livro1 = new Livro(
-        1,                 // numero
+    // Objeto ProdutoEletronicoTeste 
+    const livro1 = new ProdutoEletronico(
+        1,                 // id
         "Clean Code",      // nome
         120.00,            // preco
-        10,                // quantidade
-        "Robert C. Martin",// autor
-        464                // numeroPaginas
+        "pichau",          // marca
+
     );
 
 
     // Exibir detalhes do livro
     livro1.exibirDetalhes();
 
-    // Alterar atributos
-    livro1.quantidade = 15;
-    livro1.numeroPaginas = 500;
-
-    // Mostrar novamente
-    console.log("\nApós alterações:");
-    livro1.exibirDetalhes();
 
 
 
@@ -79,18 +72,12 @@ export function main() {
                 console.log("Digite o preco do produto: ");
                 preco = readlinesync.questionFloat("");
 
-                console.log("\nDigite a quantidade: ");
-                quantidade = readlinesync.questionInt("");
-
-                console.log("Digite o autor do livro: ");
-                autor = readlinesync.question("");
-
-                console.log("Digite o número de páginas: ");
-                paginas = readlinesync.questionInt("");
+                console.log("\nDigite a marca: ");
+                marca = readlinesync.question("");
 
 
                 // Cria o produto usando os valores digitados
-                produtos.criar(new Livro(produtos.gerarNumero(), nome, preco, quantidade, autor, paginas));
+               produtos.criar(new ProdutoEletronico(produtos.gerarNumero(), nome, preco, marca));
 
 
                 keyPress()
@@ -125,18 +112,10 @@ export function main() {
                     console.log("Digite o preco do produto: ");
                     preco = readlinesync.questionFloat("");
 
-                    console.log("\nDigite a quantidade: ");
-                    quantidade = readlinesync.questionInt("");
-
-                    console.log("Digite o autor do livro: ");
-                    autor = readlinesync.question("");
-
-                    console.log("Digite o número de páginas: ");
-                    paginas = readlinesync.questionInt("");
 
 
                     // Cria o produto usando os valores digitados
-                    produtos.atualizar(new Livro(produtos.gerarNumero(), nome, preco, quantidade, autor, paginas));
+                    // produtos.atualizar(new Livro(produtos.gerarNumero(), nome, preco, quantidade, autor));
 
                 } else {
                     console.log("\nO produto com o nome: " + numero + " não foi encontrada!",);
