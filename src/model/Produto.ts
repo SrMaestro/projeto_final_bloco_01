@@ -2,10 +2,10 @@ import { log } from "console";
 
 export abstract class Produto {
     // Atributos da classe Produto
-    private _id : number; 
+    private _id: number;
     private _nome: string;
     private _preco: number;
-    
+
 
 
     // Construtor para buildar no objeto Produto
@@ -41,7 +41,12 @@ export abstract class Produto {
 
 
     public set preco(preco: number) {
+
+        if (preco < 0) {
+            throw new Error("Preço não pode ser negativo");
+        }
         this._preco = preco;
+
     }
 
 
@@ -49,7 +54,7 @@ export abstract class Produto {
         console.log(`Numero : ${this._id}`);
         console.log(`Produto: ${this._nome}`);
         console.log(`Preço: R$ ${this._preco.toFixed(2)}`);
-        
+
     }
 
 
