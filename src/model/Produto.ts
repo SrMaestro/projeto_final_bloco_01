@@ -2,31 +2,29 @@ import { log } from "console";
 
 export abstract class Produto {
     // Atributos da classe Produto
-    private _numero: number;
+    private _id : number; 
     private _nome: string;
     private _preco: number;
-    private _quantidade: number;
+    
 
 
-    // Construtor para buildar no objeto
-
-    constructor(numero: number, nome: string, preco: number, quantidade: number) {
-        this._numero = numero;
+    // Construtor para buildar no objeto Produto
+    constructor(id: number, nome: string, preco: number, quantidade: number) {
+        this._id = id;
         this._nome = nome;
-        this._preco = this.validarValor(preco);
-        this._quantidade = this.validarValor(quantidade);
+        this._preco = preco;
     }
 
 
 
     // Getters e Setters
 
-    public get numero() {
-        return this._numero;
+    public get id() {
+        return this._id;
     }
 
-    public set numero(numero: number) {
-        this._numero = numero;
+    public set id(id: number) {
+        this.id = id;
     }
 
     public get nome() {
@@ -34,7 +32,7 @@ export abstract class Produto {
     }
 
     public set nome(nome: string) {
-        this._nome = nome
+        this._nome = nome;
     }
 
     public get preco() {
@@ -43,36 +41,16 @@ export abstract class Produto {
 
 
     public set preco(preco: number) {
-        this._preco = this.validarValor(preco);
-    }
-
-    public get quantidade() {
-        return this._quantidade
-    }
-
-    public set quantidade(quantidade: number) {
-        this._quantidade = this.validarValor(quantidade);
-
+        this._preco = preco;
     }
 
 
     public exibirDetalhes(): void {
-        console.log(`Numero : ${this._numero}`);
+        console.log(`Numero : ${this._id}`);
         console.log(`Produto: ${this._nome}`);
         console.log(`Preço: R$ ${this._preco.toFixed(2)}`);
-        console.log(`Quantidade: ${this._quantidade}`);
+        
     }
-
-
-    public validarValor(valor: number): number {
-
-        if (valor < 0) {
-            throw new Error("Valor não pode ser negativo");
-        }
-
-        return valor;
-    }
-
 
 
 }
