@@ -24,7 +24,7 @@ export abstract class Produto {
     }
 
     public set id(id: number) {
-        this.id = id;
+        this._id = id;
     }
 
     public get nome() {
