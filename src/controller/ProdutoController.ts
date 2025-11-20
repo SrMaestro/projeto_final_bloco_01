@@ -8,7 +8,7 @@ export class ProdutoController implements ProdutoRepository {
 
     criar(produto: Produto): void {
         this.listaProdutos.push(produto);
-        console.log("\n Produto : " + produto.numero + " foi criada com sucesso");
+        console.log("\n Produto : " + produto.id + " foi criada com sucesso");
     }
 
     listar(): void {
@@ -75,7 +75,7 @@ export class ProdutoController implements ProdutoRepository {
     
       public buscarPorId(numero: number): Produto | null {
         for (let conta of this.listaProdutos) {
-            if (conta.numero === numero)
+            if (conta.id === numero)
                 return conta;
         }
         return null

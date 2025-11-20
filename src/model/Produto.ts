@@ -9,7 +9,7 @@ export abstract class Produto {
 
 
     // Construtor para buildar no objeto Produto
-    constructor(id: number, nome: string, preco: number, quantidade: number) {
+    constructor(id: number, nome: string, preco: number) {
         this._id = id;
         this._nome = nome;
         this._preco = preco;

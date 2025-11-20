@@ -7,8 +7,8 @@ export class Livro extends Produto {
     private _numeroPaginas: number
 
 
-    constructor(numero: number,nome: string, preco: number, quantidade: number, autor: string, numeroPaginas: number) {
-        super(numero ,nome, preco, quantidade); // chama o construtor da classe Produto
+    constructor(numero: number,nome: string, preco: number,autor: string, numeroPaginas: number) {
+        super(numero ,nome, preco, ); // chama o construtor da classe Produto
         this._autor = autor;
         this._numeroPaginas = numeroPaginas;
     }
@@ -26,8 +26,10 @@ export class Livro extends Produto {
     }
 
     public set numeroPaginas(numeroPaginas: number) {
-        this._numeroPaginas = this.validarValor(numeroPaginas)
+        this._numeroPaginas = numeroPaginas;
     }
+
+     
 
 
 
